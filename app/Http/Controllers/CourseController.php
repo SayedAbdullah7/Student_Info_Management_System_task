@@ -39,7 +39,7 @@ class CourseController extends Controller
         $courses = Course::when($request->search, function ($query) use ($request) {
             $search = $request->input('search');
             $query->where('name', 'like', "%{$search}%")
-                ->orWhere('code', 'like', "%{$search}%");   
+                ->orWhere('code', 'like', "%{$search}%");
         })
             ->paginate(10);
 
