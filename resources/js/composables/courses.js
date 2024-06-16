@@ -9,8 +9,12 @@ export default function useCourses() {
     const course = ref({})
 
 
-    const getCoursesPaginated = async (page = 1, level_id = '') => {
-        axios.get('/api/courses?page=' + page + '&level_id=' + level_id)
+    const getCoursesPaginated = async (page = 1, query = '') => {
+        axios.get('/api/courses',{
+            params: {
+                page,
+                search: query
+            }})
             .then(response => {
                 console.log('getCourses')
                 console.log(response.data)

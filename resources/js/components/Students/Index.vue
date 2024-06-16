@@ -71,7 +71,9 @@ const headers = [
     {key: 'code', label: 'Code'},
     {key: 'email', label: 'Email'},
     {key: 'level.name', label: 'Level'},
-    {key: 'created_at', label: 'Created At'}
+    {key: 'date_of_birth', label: 'Date of Birth'},
+    {key: 'created_at', label: 'Created at'},
+
 ]
 
 const searchQuery = ref('');

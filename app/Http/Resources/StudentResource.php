@@ -22,6 +22,7 @@ class StudentResource extends JsonResource
             'level' => $this->whenLoaded('level', function () {
                 return new LevelResource($this->level);
             }),
+            'date_of_birth' => $this->date_of_birth,
             'created_at' => !$this->created_at?:$this->created_at->format('Y-m-d H:i:s'),
             'updated_at' => !$this->updated_at?:$this->updated_at->format('Y-m-d H:i:s'),
         ];

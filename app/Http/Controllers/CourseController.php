@@ -19,6 +19,7 @@ class CourseController extends Controller
         $courses = Course::all();
         return CourseResource::collection($courses);
     }
+
     public function availableCoursesForStudent($studentId): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
         if (!$studentId) {
@@ -33,20 +34,17 @@ class CourseController extends Controller
     }
 
 
-
-
     public function index(Request $request): \Illuminate\Http\Resources\Json\AnonymousResourceCollection
     {
-        $courses = Course::when($request->has('search'), function ($query) use ($request) {
+        $courses = Course::when($request->search, function ($query) use ($request) {
             $search = $request->input('search');
             $query->where('name', 'like', "%{$search}%")
-                ->orWhere('code', 'like', "%{$search}%");
+                ->orWhere('code', 'like', "%{$search}%");   
         })
             ->paginate(10);
 
         return CourseResource::collection($courses);
     }
-
 
 
 // Retrieve a specific course by ID
